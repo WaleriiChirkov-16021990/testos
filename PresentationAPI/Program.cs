@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Persistence;
+using Persistence.ExperimentalData;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -20,6 +21,25 @@ builder.Services.AddDbContext<DataContext>(op =>
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
+
+using (var serviceScope = app.Services.CreateScope())
+{
+    var serviceProvider = serviceScope.ServiceProvider;
+    try
+    {
+        var context = serviceProvider.GetRequiredService<DataContext>();
+        await context.Database.MigrateAsync();
+        await TestDataProvider.Provide(context, 100);
+    }
+    catch (Exception e)
+    {
+        var logger = serviceProvider.GetRequiredService<ILogger<Program>>();
+        logger.LogError(e, "Непредвиденная ошибка миграции");
+    }
+}
+
+
+
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
