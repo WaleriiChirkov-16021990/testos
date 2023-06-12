@@ -96,3 +96,24 @@ _!Будьте внимательны: версия EF должна соотве
 И обновления базы данных:
 
 `dotnet ef database update -s PresentationAPI`# testos
+
+
+удаляю appsettings.json
+
+
+// "ConnectionStrings": {
+//   "PostgreSQLConnection": "Host=localhost:8888; Username=postgres; Password=12345678;Database=Communiko"
+// },
+
+{
+  "ConnectionStrings": {
+    "PostgreSQLConnection": "Host=localhost:8888; Username=postgres; Password=12345678;Database=Communiko"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
