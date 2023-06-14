@@ -1,6 +1,7 @@
 Структура
 
 Примерные "слои" приложения
+
 - Presentation
 - Business
 - Persistence
@@ -65,16 +66,20 @@ dotnet restore
 
 Пример строки подключения:
 ```
+
 "PostgreSQLConnection": "Host=localhost:8888; Username=postgres; Password=12345678;Database=Communiko"
+
 ```
 
 Конфигурация контекста:
 
 ```
+
 builder.Services.AddDbContext<DataContext>(op =>
 {
 op.UseNpgsql(builder.Configuration.GetConnectionString("PostgreSQLConnection"));
 });
+
 ```
 
 Для проверки инструментов EF в терминале выполнить `dotnet ef`
@@ -140,3 +145,43 @@ SELECT
 FROM "Activities"
 WHERE "Activities"."PointTime" > '2023-09-24';
 }
+
+## Создание клиента
+
+Настроить и подключить необходимые компоненты
+- http://reactjs.org [doc](https://react.dev/learn) | [new react app](https://react.dev/learn/start-a-new-react-project) ([можно в качестве теста создать пустое приложение и посмотреть основы](#)) [+](https://create-react-app.dev)
+- https://nodejs.org/en
+- https://www.typescriptlang.org
+
+- Версия node `node --version`
+- Версия mpm `npm --version `
+- Проверка npx `which npx` если нет - `npm install -g npx` [подробнее](https://dev-gang.ru/article/npm-protiv-npx-v-czem-raznica-hsvo0oxvqs/)
+- Создание клиентского приложения `npx create-react-app client --use-npm --template typescript` ([подробнее](https://create-react-app.dev/docs/adding-typescript/))
+- Многие верстальщики рекомендуют использовать плагин [Prettier - Code formatter](https://marketplace.visualstudio.com/items?itemName=esbenp.prettier-vscode)
+
+```
+
+Обновить файл _Communiko/PresentationAPI/appsettings.json_
+добавив строку подключения к бд
+
+```
+{
+  "ConnectionStrings": {
+    "PostgreSQLConnection": "Host=$HOST:PORT$; Username=$Username$; Password=$Password$;Database=$db_name$"
+  },
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information",
+      "Microsoft.AspNetCore": "Warning"
+    }
+  },
+  "AllowedHosts": "*"
+}
+```
+
+Пример строки подключения:
+
+```
+"PostgreSQLConnection": "Host=localhost:8888; Username=postgres; Password=12345678;Database=Communiko"
+
+```
