@@ -29,8 +29,55 @@
                         "description": "Проверка работоспособности приложения"
                     },
                     "response": []
-                }
-            ]
-        }
-    ]
+            }
+			]
+		},
+		{
+			"name": "ActivenessController",
+			"item": [
+				{
+					"name": "Получение всех записей",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:11222/api/Activeness/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "11222",
+							"path": [
+								"api",
+								"Activeness",
+								""
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Получение записи по id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:11222/api/Activeness/0262c42b-374b-45fd-8250-1b278e4dad9a",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "11222",
+							"path": [
+								"api",
+								"Activeness",
+								"0262c42b-374b-45fd-8250-1b278e4dad9a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
 }

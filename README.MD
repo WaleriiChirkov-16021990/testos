@@ -185,3 +185,6 @@ WHERE "Activities"."PointTime" > '2023-09-24';
 "PostgreSQLConnection": "Host=localhost:8888; Username=postgres; Password=12345678;Database=Communiko"
 
 ```
+
+Потребуется библиотека [axios](https://www.npmjs.com/package/axios) `npm i axios`
+Failed to load resource: Origin is not allowed by Access-Control-Allow-Origin. Status code: 200 [Про CORS на Habr](https://habr.com/ru/companies/macloud/articles/553826/)
