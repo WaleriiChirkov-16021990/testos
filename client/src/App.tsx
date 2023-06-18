@@ -1,6 +1,8 @@
 import React from 'react';
 import logo from './logo.svg';
 import './App.css';
+import { Worker, workers } from './Worker';
+import {WorkerItem} from './WorkerComponent';
 
 function App() {
   return (
@@ -18,6 +20,10 @@ function App() {
         >
           Learn React
         </a>
+        {workers.map(item => (
+            <WorkerItem worker = {item} />
+          ))}
+
       </header>
     </div>
   );
